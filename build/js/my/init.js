@@ -1,14 +1,22 @@
 $(document).ready(function() {
 	$('a.smooth').click(function(){
 		$('html, body').animate({
-			scrollTop: $( $.attr(this, 'href') ).offset().top - 80
+			scrollTop: $( $.attr(this, 'href') ).offset().top
 		}, 1000);
 		return false;
 	});
-	
 	var owlMain = $('[data-item="slider-main"]');
+	owlMain.on('initialized.owl.carousel', function(event) {
+		var items = event.item.count;
+		var item = event.item.index + 1;
+		var total = $('[data-item="total"]');
+		var carrent = $('[data-item="carrent"]');
+		total.html(items);
+		carrent.html(item);
+	});
+	
 	owlMain.owlCarousel({
-		loop:true,
+		loop:false,
 		margin:0,
 		nav:true,
 		dots:false,
@@ -21,8 +29,33 @@ $(document).ready(function() {
 		  "<i class='my-arrow-right'></i>"
 		],
 	});
-	var form = $('[data-form="send"]');
+	owlMain.on('changed.owl.carousel', function(event) {
+		var items = event.item.count;
+		var item = event.item.index + 1;
+		var total = $('[data-item="total"]');
+		var carrent = $('[data-item="carrent"]');
+		total.html(items);
+		carrent.html(item);
+	});
 	
+	var to = $('.my-main-img img');
+	var from = $('.my-pagination img');
+	from.click(function() {
+		var loc = $(this).attr("src");
+		to.attr("src",loc);
+	});
+	$('.my-pagination .item').click(function() {
+		
+		$('.my-pagination .item').removeClass('active');
+		$(this).addClass('active');
+	});
+	$('.header-lvl-2 .nav.navbar-nav li a').click(function() {
+		
+		$('.header-lvl-2 .nav.navbar-nav li a').removeClass('active');
+		$(this).addClass('active');
+	});
+	
+	var form = $('[data-form="send"]');
 	$(form).validator().on('submit', function (e) {
 		if ($(this).hasClass('disabled')) {
 			// handle the invalid form...
@@ -32,11 +65,8 @@ $(document).ready(function() {
 			send();
 		}
 	});
-	
 	var scroll_r = $(this).scrollTop();
-	
 	menuTop();
-	
 	$(window).scroll(function () {
 		var scroll_r = $(this).scrollTop();
 		menuTop();
@@ -57,13 +87,13 @@ $(document).ready(function() {
 				''
 			].join(''),
 				balloonContentBody: [
-				'<div class=\'map_holder\'><div class=\'map_header\'><p>Контакты</p><\/div><div class=\'map_address\'><div class=\'icon\'><\/div><p>пл. Свободы, 2г. Москва, Рязанский проспект д 2/23</p><\/div><div class=\'map_phone\'><div class=\'icon\'><\/div><p><strong>8 (495) 105-95-03</strong></p><p><strong>8 (800) 505-16-03</strong></p><p>(Бесплатно по Росиии)</p><\/div><div class=\'map_date\'><div class=\'icon\'><\/div><p>Пн-Пт с 08:00 до 17:00</p><\/div><div class=\'map_mail\'><div class=\'icon\'><\/div><p><a href="mailto:shop@wood-game.ru">shop@wood-game.ru</a></p><\/div><\/div>'
+				'<div class=\'map_holder\'><div class=\'map_header\'><p>Контакты</p><\/div><div class=\'map_address\'><div class=\'icon\'><\/div><p>г. Москва, м. Митино</p><\/div><div class=\'map_phone\'><div class=\'icon\'><\/div><p><strong>+ 7 965-242-97-42</strong></p><p><strong>+ 7 926-113-58-17</strong></p><\/div><div class=\'map_date\'><div class=\'icon\'><\/div><p>Пн-Пт с 09:00 до 18:00</p><\/div><div class=\'map_mail\'><div class=\'icon\'><\/div><p><a href="mailto:Topsales15@mail.ru">Topsales15@mail.ru</a></p><\/div><\/div>'
 			].join('')
 			}, {
 				iconLayout: 'default#image',
 				iconImageHref: 'assets/img/pick-map.png',
-				iconImageSize: [102, 91],
-				iconImageOffset: [-38, -91]
+				iconImageSize: [59, 87],
+				iconImageOffset: [-32, -87]
 			});
 		myMap.geoObjects.add(myPlacemark);
 	}

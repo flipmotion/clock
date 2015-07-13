@@ -17,6 +17,66 @@
 		}
 	}
 }
+.modal {
+	.modal-content {
+		border-radius: 0;
+	}
+	.modal-body {
+		padding: 10px 30px 15px 30px;
+	}
+	.modal-dialog {
+		width: 380px;
+	}
+	h2 {
+		font-size: 24px;
+		font-weight: bold;
+		margin: 15px 0 10px;
+	}
+	button.close {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		width: 20px;
+		height: 20px;
+		background: url(../img/close.png) center center no-repeat;
+	}
+	h3 {
+		font-size: 14px;
+		font-weight: 300;
+		margin: 0px 0 15px;
+	}
+	.has-error .form-control {
+		border-color: #a94442;
+		box-shadow: none;
+	}
+	.my {
+		&-input {
+			border: 1px solid #dbdbdb;
+			&.user {
+				background: url(../img/user-2.png) #fff right 15px center no-repeat;
+			}
+			&.phone {
+				background: url(../img/phone-2.png) #fff right 18px center no-repeat;
+			}
+			&.email {
+				background: url(../img/msg-2.png) #fff right 15px center no-repeat;
+			}
+			&.msg {
+				background: url(../img/pick-3.png) #fff right 18px top 10px no-repeat;
+				resize: none;
+			}
+			&.q {
+				background: url(../img/question.png) #fff right 15px top 10px no-repeat;
+				resize: none;
+			}
+		}
+	}
+	.btn-danger {
+		width: 100%;
+		padding: 10px;
+		font-size: 16px;
+	}
+}
 .btn-danger {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e80000+0,db3131+100 */
 	background: #e80000; /* Old browsers */

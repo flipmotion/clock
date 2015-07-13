@@ -1,7 +1,18 @@
 .header {
-	
+	transition: @transition;
+	transform: translateY(0px);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	&.fix-header {
+		transition: @transition;
+		transform: translateY(-75px);
+	}
 	&-lvl-1 {
 		padding: 15px 0;
+		background: #fff;
 		.logo {
 			&>div {
 				display: table-cell;
@@ -60,8 +71,8 @@
 					font-weight: 300;
 					padding: 10px 10px;
 				}
-				.active {
-					a {
+				a.active  {
+					
 						/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#363636+1,414141+100 */
 						background: #363636; /* Old browsers */
 						/* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -74,7 +85,7 @@
 						background: linear-gradient(to bottom,  #363636 1%,#414141 100%); /* W3C */
 						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363636', endColorstr='#414141',GradientType=0 ); /* IE6-8 */
 
-					}
+					
 				}
 			}
 			.navbar-collapse {
